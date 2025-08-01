@@ -13,6 +13,7 @@ import React, { type JSX } from "react";
   * @param {Date} creationDate - The creation date of the image.
   * @param {string} documentId - The document ID associated with the image in the database.
   * @param {React.Dispatch<React.SetStateAction<boolean>>} setRefreshFetch - A state setter function to trigger a refresh of the image list.
+  * @param {React.Dispatch<React.SetStateAction<number>>} setTotalImageNumber - A state setter function to update the total number of images.
   *
   * @returns {JSX.Element} A styled card containing the image, name, and formatted creation date, with a delete button.
   */
@@ -23,6 +24,7 @@ import React, { type JSX } from "react";
    creationDate,
    documentId,
    setRefreshFetch,
+   setTotalImageNumber,
  }: {
    id: string;
    name: string;
@@ -30,15 +32,18 @@ import React, { type JSX } from "react";
    creationDate: Date;
    documentId: string;
    setRefreshFetch: React.Dispatch<React.SetStateAction<boolean>>;
+   setTotalImageNumber: React.Dispatch<React.SetStateAction<number>>;
  }): JSX.Element => {
    /**
     * Handles the deletion of the image.
+    * Logs success or error messages to the console.
     */
    const handleDelete = async () => {
      try {
        await deletePicture(id, documentId);
        console.log("Image deleted successfully.");
-       setRefreshFetch((prev) => !prev);
+       setRefreshFetch((prev) => !prev); // Toggle the refresh flag to trigger a re-fetch
+       setTotalImageNumber((prev) => prev - 1); // Decrement the total image count
      } catch (error) {
        console.error("Error deleting image:", error);
      }

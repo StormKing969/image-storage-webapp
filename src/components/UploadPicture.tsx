@@ -1,6 +1,5 @@
-import React, {type JSX, useCallback, useEffect, useState} from "react";
+import React, { type JSX, useCallback, useEffect, useState } from "react";
 import {
-  getTotalPicturesCount,
   updatePictureDatabase,
   uploadPicture,
 } from "../api/appwrite.ts";
@@ -25,6 +24,7 @@ const UploadPicture = ({
 
   /**
    * Handles file input changes and sets the selected image for upload.
+   *
    * @param {React.ChangeEvent<HTMLInputElement>} e - The file input change event.
    */
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,12 +46,14 @@ const UploadPicture = ({
     }
 
     try {
+      // Upload the image and retrieve its ID
       const imageId = await uploadPicture(image);
 
       if (!imageId) {
         console.error("Failed to upload image.");
         return;
       } else {
+        // Update the database with the uploaded image details
         await updatePictureDatabase(imageId, image.name, new Date());
         setTotalImageNumber((prev: number) => prev + 1);
         console.log("Image uploaded and database updated successfully.");
@@ -72,29 +74,6 @@ const UploadPicture = ({
         .finally(() => setImage(null));
     }
   }, [toUpload, image, handleUpload]);
-
-  /**
-   * Effect to fetch the total number of pictures from the database on component mount.
-   * Ensures safe state updates using an isMounted flag.
-   */
-  useEffect(() => {
-    let isMounted = true;
-
-    getTotalPicturesCount()
-      .then((total) => {
-        console.log("Total images count fetched:", total);
-        if (isMounted) {
-          setTotalImageNumber(total);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   return (
     <div className={"mb-5 md:mb-0"}>
