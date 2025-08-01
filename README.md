@@ -1,7 +1,7 @@
 # Image Storage & Management Web App
 
 A modern, responsive web application for storing, viewing, and managing images. Built with React, TypeScript, Vite, and 
-Tailwind CSS, and powered by Appwrite for secure image storage.
+Tailwind CSS, and powered by Appwrite for secure image storage. It took about 7 ~ 8 hours to develop this application, focusing on simplicity and user experience.
 
 ## 🚀 Features
 
