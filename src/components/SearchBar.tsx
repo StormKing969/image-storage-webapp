@@ -20,7 +20,7 @@ import React, { type JSX } from "react";
  }): JSX.Element => {
    return (
      <div
-       className={"relative flex items-center bg-gray-500 rounded-sm min-w-md"}
+       className={"relative flex items-center bg-gray-500 rounded-sm md:min-w-md"}
      >
        {/* Search icon displayed on the left side of the input field */}
        <img

@@ -1,4 +1,4 @@
-import {type JSX, useEffect, useState} from "react";
+import { type JSX, useEffect, useState } from "react";
 import SearchBar from "./SearchBar.tsx";
 import UploadPicture from "./UploadPicture.tsx";
 import { fetchPictures } from "../api/appwrite.ts";
@@ -48,7 +48,7 @@ const Home = (): JSX.Element => {
       const response = await fetchPictures(searchTerm);
 
       // If the response is empty or undefined, log an error and set imageList to an empty array
-      if (!response || response.length === 0 || response === undefined) {
+      if (!response || response.length === 0) {
         console.error("No images found");
         setImageList([]);
         return;
@@ -86,7 +86,9 @@ const Home = (): JSX.Element => {
       className={"px-3 py-12 max-w-7xl mx-auto flex flex-col relative z-10"}
     >
       <header
-        className={"flex flex-row justify-between w-full h-full items-center"}
+        className={
+          "flex flex-row sm:flex-col justify-between w-full h-full items-center"
+        }
       >
         <SearchBar searchImage={searchImage} setSearchImage={setSearchImage} />
         <UploadPicture setTotalImageNumber={setTotalImageNumber} />
@@ -103,7 +105,7 @@ const Home = (): JSX.Element => {
               Loading...
             </h1>
           ) : (
-            <div className="grid grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
               {imageList.length > 0 ? (
                 // Render image cards for each image in the list
                 imageList.map((image) => (

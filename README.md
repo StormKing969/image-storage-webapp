@@ -1,69 +1,82 @@
-# React + TypeScript + Vite
+# Image Storage & Management Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application for storing, viewing, and managing images. Built with React, TypeScript, Vite, and 
+Tailwind CSS, and powered by Appwrite for secure image storage.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Upload images with ease
+- View images in a responsive gallery
+- Delete unwanted images
+- Mobile-friendly design
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Appwrite (cloud storage & backend)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js v16+
+- npm
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/StormKing969/image-storage-webapp.git
+cd image-storage-webapp
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Configuration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file in the root directory and add your Appwrite project credentials:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_APPWRITE_ENDPOINT=https://your-appwrite-endpoint
+VITE_APPWRITE_PROJECT_ID=your-project-id
+VITE_APPWRITE_BUCKET_ID=your-bucket-id
+VITE_APPWRITE_DATABASE_ID=your-database-id
+VITE_APPWRITE_COLLECTION_ID=your-collection-id
 ```
+
+Replace the placeholders with your actual Appwrite values.
+
+### Running the Application
+
+To start the development server, run:
+
+```bash
+npm run dev
+```
+
+## 🗂️ Project Structure
+
+```plaintext
+src/
+├── components/          # Sectioned React components
+├── api/                 # Appwrite service for API calls
+├── index.css            # Global styles and Tailwind configuration
+├── App.tsx              # Main application component
+├── main.tsx             # Entry point for React
+```
+## 📝 Future Improvements
+
+- Enhanced UI/UX
+- User authentication via Appwrite
+- Unit and E2E testing
+- Performance optimizations for large galleries
+- Pagination for image lists
+
+## 🤝 Contributing
+Contributions are welcome! Please open an issue or submit a pull request for suggestions or improvements.
+
+## 📄 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details

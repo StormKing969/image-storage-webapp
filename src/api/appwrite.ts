@@ -29,6 +29,7 @@ export const getTotalPicturesCount = async (): Promise<number> => {
  * Fetches pictures from the database based on a search query.
  *
  * @param {string} query - The search query to filter pictures by name.
+ *
  * @returns {Promise<Array<{documentId: string, imageId: string, imageName: string, createdAt: string, imageUrl: string}>> | undefined}
  *          An array of picture objects, or undefined if an error occurs.
  */
@@ -68,6 +69,7 @@ export const fetchPictures = async (
  * Uploads a picture file to the storage bucket.
  *
  * @param {File} file - The image file to upload.
+ *
  * @returns {Promise<string | null>} The unique ID of the uploaded file, or null if an error occurs.
  */
 export const uploadPicture = async (file: File): Promise<string | null> => {
@@ -95,6 +97,7 @@ export const uploadPicture = async (file: File): Promise<string | null> => {
  * @param {string} imageId - The unique ID of the uploaded image.
  * @param {string} imageName - The name of the image.
  * @param {Date} createdAt - The creation date of the image.
+ *
  * @returns {Promise<void>} Resolves when the database is successfully updated.
  */
 export const updatePictureDatabase = async (
@@ -134,6 +137,7 @@ export const updatePictureDatabase = async (
  *
  * @param {string} imageId - The unique ID of the image in the storage bucket.
  * @param {string} documentId - The document ID of the image in the database.
+ *
  * @returns {Promise<void>} Resolves when the picture is successfully deleted.
  */
 export const deletePicture = async (
