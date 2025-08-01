@@ -97,7 +97,7 @@ const UploadPicture = ({
   }, []);
 
   return (
-    <div>
+    <div className={"mb-5 md:mb-0"}>
       {/* Hidden file input for selecting an image */}
       <input
         type="file"

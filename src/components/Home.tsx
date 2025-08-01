@@ -20,7 +20,6 @@ import ImageCard from "./ImageCard.tsx";
  *
  * Functions:
  * @function getAllImages - Fetches images based on the search term and updates the image list.
- * @param {string} searchTerm - The search term used to filter images.
  *
  * Effects:
  * @effect Debounces the search term to optimize API calls.
@@ -87,7 +86,7 @@ const Home = (): JSX.Element => {
     >
       <header
         className={
-          "flex flex-row sm:flex-col justify-between w-full h-full items-center"
+          "flex flex-col-reverse md:flex-row justify-between w-full h-full items-center"
         }
       >
         <SearchBar searchImage={searchImage} setSearchImage={setSearchImage} />
